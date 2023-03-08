@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import FormInput from "../form-inputs/form-input.component";
 import {
 	signInWithGooglePopup,
@@ -25,11 +26,10 @@ const LogInForm = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
+			const { user } = await signInAuthUserWithEmailAndPassword(
 				email,
 				password
 			);
-			console.log(response);
 			resetFormFields();
 		} catch (error) {
 			switch (error.code) {
@@ -58,8 +58,7 @@ const LogInForm = () => {
 	// 	})();
 	// }, []);
 	const LogInWithGoogle = async () => {
-		const { user } = await signInWithGooglePopup();
-		await createUserDocumentFromAuth(user);
+		await signInWithGooglePopup();
 	};
 
 	const handleChange = (event) => {
