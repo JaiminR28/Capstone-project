@@ -8,7 +8,6 @@ import ProductCard from "../../product-card/product-card.component";
 
 const Category = () => {
 	const { category } = useParams();
-	console.log(category);
 	const { categoriesMap } = useContext(CategoriesContext);
 	const [products, setProducts] = useState(categoriesMap[category]);
 
@@ -18,7 +17,7 @@ const Category = () => {
 
 	return (
 		<Fragment>
-			<h2 className="title ">{category.toUpperCase()}</h2>
+			<h2 className="category-title ">{category.toUpperCase()}</h2>
 			<div className="category-container">
 				{products &&
 					products.map((product) => (
